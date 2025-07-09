@@ -1,0 +1,366 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Configuraciones globales para calidad optimizada y responsive */
+* {
+  box-sizing: border-box;
+}
+
+/* Reset para móviles - CORREGIDO */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* Removido: height: 100%; */
+  overflow-x: hidden;
+  /* Agregado para permitir scroll vertical */
+  overflow-y: auto;
+}
+
+/* Prevenir zoom en móviles */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+/* Configuraciones específicas para videos de alta calidad responsive */
+video {
+  image-rendering: auto;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #000; /* Fondo negro para espacios vacíos */
+  /* NO forzar object-fit aquí - se maneja dinámicamente */
+  transform-origin: center center;
+}
+
+/* Videos con object-fit contain (para mostrar completo - videos verticales) */
+video.object-contain {
+  object-fit: contain !important;
+  background-color: #000 !important;
+}
+
+/* Videos con object-fit cover (para llenar pantalla - videos horizontales) */
+video.object-cover {
+  object-fit: cover !important;
+  background-color: #000 !important;
+}
+
+/* Contenedores de video con fondo negro */
+.video-container {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos específicos para diferentes contextos */
+@media (orientation: landscape) and (min-width: 768px) {
+  /* Pantallas web horizontales */
+  .video-vertical-in-web {
+    object-fit: contain !important; /* Videos verticales en web: mostrar completos */
+  }
+
+  .video-horizontal-in-web {
+    object-fit: cover !important; /* Videos horizontales en web: llenar pantalla */
+  }
+}
+
+@media (orientation: portrait), (max-width: 767px) {
+  /* Pantallas móviles/verticales */
+  .video-vertical-in-mobile {
+    object-fit: contain !important; /* CAMBIO: También contain en móvil para alta resolución */
+  }
+
+  .video-horizontal-in-mobile {
+    object-fit: contain !important; /* Videos horizontales en móvil: mostrar completos */
+  }
+}
+
+/* Configuraciones específicas para videos de alta resolución */
+.high-res-video {
+  object-fit: contain !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  image-rendering: auto !important;
+}
+
+/* Contenedor específico para videos verticales de alta resolución en web */
+.vertical-high-res-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #000 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.vertical-high-res-container video {
+  object-fit: contain !important;
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Configuraciones específicas para imágenes de alta calidad responsive */
+img {
+  image-rendering: auto;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Configuraciones para pantallas de alta resolución */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  video, img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Configuraciones para pantallas grandes manteniendo responsive */
+@media (min-width: 1920px) {
+  video, img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Elementos de pantalla optimizados para responsive */
+.screen-content {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedores específicos por tipo de dispositivo */
+.mobile-container {
+  padding: 0;
+  margin: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  background: #000;
+  overflow: hidden;
+}
+
+.desktop-container {
+  padding: 0;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+.tv-container {
+  padding: 0;
+  max-width: 100vw;
+  max-height: 100vh;
+  background: #000;
+}
+
+/* Clases para videos verticales y horizontales */
+.vertical-video {
+  object-fit: contain !important;
+}
+
+.horizontal-video {
+  object-fit: contain !important;
+}
+
+/* Responsive breakpoints específicos - CORREGIDO */
+@media (max-width: 768px) {
+  /* Móviles - Solo aplicar estilos restrictivos a páginas de pantalla */
+  body.screen-page {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Permitir scroll normal en páginas de administración */
+  body:not(.screen-page) {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: static;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .mobile-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #000 !important;
+  }
+
+  .mobile-container video,
+  .mobile-container img {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+
+  /* Permitir scrollbars en páginas de admin */
+  body:not(.screen-page) ::-webkit-scrollbar {
+    display: block;
+  }
+
+  /* Ocultar scrollbars solo en páginas de pantalla */
+  body.screen-page ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Prevenir zoom en inputs */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablets */
+  .desktop-container video,
+  .desktop-container img {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1919px) {
+  /* Desktop */
+  .desktop-container video,
+  .desktop-container img {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  /* TV y pantallas grandes */
+  .tv-container video,
+  .tv-container img {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+  }
+}
+
+/* Orientación específica */
+@media (orientation: portrait) {
+  .vertical-video {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 100vh !important;
+  }
+
+  .horizontal-video {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100vw !important;
+  }
+}
+
+@media (orientation: landscape) {
+  .vertical-video {
+    width: auto !important;
+    height: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .horizontal-video {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@layer base {
+  :root {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Mejoras Mobile-First */
+@media (max-width: 640px) {
+  .mobile-optimized {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .mobile-card {
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.75rem;
+  }
+  
+  .mobile-button {
+    min-height: 44px; /* Touch target accessibility */
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Desktop enhancements */
+@media (min-width: 1025px) {
+  .desktop-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* ... existing code ... */
