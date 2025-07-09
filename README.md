@@ -4,7 +4,7 @@ Sistema de señalización digital para gestionar contenido en múltiples pantall
 
 ## Requisitos previos
 
-1. Node.js 18 o superior
+1. Node.js 15 o superior
 2. FFmpeg (incluye ffprobe para metadata de videos)
 
 ### Instalación de FFmpeg
