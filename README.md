@@ -1,4 +1,4 @@
-# 📺 TV Signage - Sistema de Señalización Digital
+# 📺 TV transmission - Sistema de Transmisión Digital
 
 Sistema completo de señalización digital para gestionar y reproducir contenido multimedia en múltiples pantallas de forma centralizada. Desarrollado con Next.js, TypeScript y tecnologías modernas.
 
