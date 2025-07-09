@@ -1,6 +1,6 @@
 # 📺 TV transmission - Sistema de Transmisión Digital
 
-Sistema completo de señalización digital para gestionar y reproducir contenido multimedia en múltiples pantallas de forma centralizada. Desarrollado con Next.js, TypeScript y tecnologías modernas.
+Sistema de Transmisión digital para gestionar y reproducir contenido multimedia en múltiples pantallas de forma centralizada. Desarrollado con Next.js, TypeScript y tecnologías modernas.
 
 ## 🚀 Características Principales
 
@@ -290,4 +290,4 @@ Para soporte técnico o reportar bugs:
 
 ---
 
-**Desarrollado con ❤️ para sistemas de señalización digital modernos**
+**Desarrollado con ❤️ para sistemas de Transmisión digital modernos**

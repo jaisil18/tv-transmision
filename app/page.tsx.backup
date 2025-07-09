@@ -261,7 +261,7 @@ export default function Home() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  Sistema de Señalización Digital
+                  Sistema de Transmisión Digital
                 </motion.p>
               </StaggerItem>
             </motion.div>
