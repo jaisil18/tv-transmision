@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
+    "dev:next": "next dev",
     "dev:port": "node scripts/start-with-port.js",
     "build": "next build",
     "start": "node scripts/start-cross-platform.js",

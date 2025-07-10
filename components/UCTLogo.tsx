@@ -32,8 +32,8 @@ export default function UCTLogo({ className = '', size = 40, variant = 'isotipo'
       <Image
         src="/GO-UCT-min-650x390.png"
         alt="UCT Logo"
-        width={size * 2.8} // Aumentar ancho para evitar superposición
-        height={size}
+        width={280} // Valor fijo para evitar warning de hidratación
+        height={100}
         className="drop-shadow-sm object-contain max-w-none"
         style={{
           width: 'auto',

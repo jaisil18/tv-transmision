@@ -47,7 +47,7 @@ export async function GET(
     console.log(`📺 [Android TV Stream] Solicitando stream para TV - pantalla ${screenId}, índice ${currentIndex}`);
 
     // Obtener contenido de la pantalla
-    const contentInfo = await getScreenContent(screenId);
+    const contentInfo = await getScreenContent(screenId, request);
 
     if (!contentInfo || contentInfo.items.length === 0) {
       console.log(`⚠️ [Android TV Stream] No hay contenido para pantalla ${screenId}`);
@@ -205,7 +205,7 @@ function formatFileSize(bytes: number): string {
 }
 
 // Función para obtener contenido (reutilizada del endpoint anterior)
-async function getScreenContent(screenId: string): Promise<{ items: any[], playlistName?: string } | null> {
+async function getScreenContent(screenId: string, request: Request): Promise<{ items: any[], playlistName?: string } | null> {
   try {
     console.log(`🔍 [Android TV Stream] Buscando contenido para pantalla ${screenId}`);
 
@@ -235,20 +235,34 @@ async function getScreenContent(screenId: string): Promise<{ items: any[], playl
 
     console.log(`✅ [Android TV Stream] Playlist encontrada: ${playlist.name} con ${playlist.items?.length || 0} items`);
 
+    // Obtener la URL base del servidor desde la request
+    const host = request.headers.get('host') || 'localhost:3000';
+    const protocol = request.headers.get('x-forwarded-proto') || 'http';
+    const baseUrl = `${protocol}://${host}`;
+    
+    console.log(`🌐 [Android TV Stream] Usando URL base: ${baseUrl}`);
+
     const items = (playlist.items || []).map((item: any) => {
       // Verificar si la URL ya contiene la carpeta CASS
       const itemUrl = item.url || '';
       let videoUrl;
       
       if (itemUrl && itemUrl.includes('/api/files/media/')) {
-        // Si ya tiene una URL completa, usarla directamente
-        videoUrl = itemUrl;
+        // Si ya tiene una URL completa, reemplazar solo el host
+        const urlParts = itemUrl.split('/api/files/media/');
+        if (urlParts.length > 1) {
+          videoUrl = `${baseUrl}/api/files/media/${urlParts[1]}`;
+        } else {
+          videoUrl = itemUrl;
+        }
       } else {
-        // Si no tiene URL, construirla
+        // Si no tiene URL, construirla con la URL base dinámica
         const encodedFolder = encodeURIComponent(item.folder || 'CASS');
         const encodedName = encodeURIComponent(item.name);
-        videoUrl = `http://172.16.31.17:3000/api/files/media/${encodedFolder}/${encodedName}`;
+        videoUrl = `${baseUrl}/api/files/media/${encodedFolder}/${encodedName}`;
       }
+      
+      console.log(`📺 [Android TV Stream] Video URL generada: ${videoUrl}`);
       
       return {
         id: item.id || `video-${item.name}`,

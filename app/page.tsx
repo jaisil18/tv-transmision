@@ -18,19 +18,40 @@ export default function Home() {
   const [error, setError] = useState('');
   const [resetStep, setResetStep] = useState(1);
   const [resetToken, setResetToken] = useState('');
+  const [particles, setParticles] = useState<Array<{left: number, top: number, duration: number, delay: number}>>([]);
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch('/api/auth/check');
+        const response = await fetch('/api/auth/verify', {
+          // Configuración para evitar que aparezca como error en la consola
+          credentials: 'include'
+        });
         if (response.ok) {
           router.push('/admin');
         }
+        // Si no está autenticado (401), es normal, no registramos como error
       } catch (error) {
-        console.log('No hay sesión activa');
+        // Solo registrar errores de red reales, no de autenticación
+        if (error instanceof TypeError) {
+          console.log('Error de red verificando autenticación:', error);
+        }
       }
     };
     checkAuth();
+
+    // Generar posiciones de partículas solo en el cliente
+    const generateParticles = () => {
+      const newParticles = Array.from({ length: 6 }, () => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        duration: 3 + Math.random() * 2,
+        delay: Math.random() * 2
+      }));
+      setParticles(newParticles);
+    };
+    
+    generateParticles();
   }, [router]);
 
   const handleAdminAccess = () => {
@@ -148,13 +169,13 @@ export default function Home() {
       />
       
       {/* Partículas flotantes */}
-      {[...Array(6)].map((_, i) => (
+      {particles.map((particle, i) => (
         <motion.div
           key={i}
           className="absolute w-2 h-2 bg-uct-secondary/30 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${particle.left}%`,
+            top: `${particle.top}%`,
           }}
           animate={{
             y: [-20, 20, -20],
@@ -162,10 +183,10 @@ export default function Home() {
             opacity: [0.3, 0.8, 0.3],
           }}
           transition={{
-            duration: 3 + Math.random() * 2,
+            duration: particle.duration,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: Math.random() * 2,
+            delay: particle.delay,
             type: "tween",
           }}
         />

@@ -9,24 +9,50 @@ Sistema de Transmisión digital para gestionar y reproducir contenido multimedia
 - **Control remoto centralizado**: Gestión desde panel de administración
 - **Estado en tiempo real**: Monitoreo del estado de conexión y reproducción
 - **Configuración automática de red**: Detección automática de IP y configuración
+- **URLs dinámicas**: Adaptación automática a diferentes redes sin hardcodear IPs
 
 ### 🎬 Reproducción Multimedia
 - **Formatos soportados**: MP4, WebM, JPG, PNG, GIF
 - **Streaming HLS**: Transmisión optimizada para múltiples dispositivos
 - **Listas de reproducción**: Programación de contenido con horarios
 - **Transiciones suaves**: Animaciones optimizadas con Framer Motion
+- **Manejo robusto de errores**: Sistema inteligente de reintentos y recuperación
+- **Optimización para Android TV**: Configuración específica para hardware limitado
 
 ### 🔧 Panel de Administración
 - **Gestión de contenido**: Subida, organización y eliminación de archivos
 - **Programación**: Scheduler avanzado para contenido por horarios
 - **Analytics**: Dashboard con estadísticas de reproducción
 - **Diagnóstico de red**: Herramientas de troubleshooting integradas
+- **TypeScript completo**: Tipado estricto para mayor robustez
 
 ### 🌐 Conectividad
 - **WebSocket en tiempo real**: Comunicación bidireccional instantánea
 - **API REST completa**: Endpoints para todas las funcionalidades
 - **Configuración automática**: Scripts para setup de red automático
 - **Soporte multi-red**: Adaptación automática a diferentes entornos
+- **Compatibilidad de red mejorada**: Funciona en diferentes VLANs y configuraciones
+
+## ✨ Mejoras Recientes (v2024.1)
+
+### 🔧 Optimizaciones para Android TV
+- **Manejo de errores mejorado**: Sistema inteligente de clasificación y recuperación de errores
+- **Reintentos incrementales**: Delays progresivos (5s, 10s, 15s) para errores de red
+- **Gestión de memoria**: Limpieza automática de buffers y garbage collection
+- **Configuración específica**: Propiedades optimizadas para hardware de TV
+- **Preload inteligente**: Carga anticipada solo de metadatos del siguiente video
+
+### 🌐 URLs Dinámicas
+- **Detección automática de host**: No más IPs hardcodeadas en el código
+- **Adaptación de red**: Funciona automáticamente en diferentes redes
+- **Compatibilidad mejorada**: Soporte para proxies y configuraciones complejas
+- **Logging detallado**: Información completa de URLs generadas para debugging
+
+### 🛡️ Robustez de Código
+- **TypeScript estricto**: Eliminación completa de tipos 'any' y 'unknown'
+- **Type guards**: Validación segura de tipos en runtime
+- **Error handling**: Manejo consistente de errores en toda la aplicación
+- **Prevención de bucles**: Lógica mejorada para evitar reintentos infinitos
 
 ## 📋 Requisitos del Sistema
 
@@ -220,6 +246,17 @@ npm run update-network
 # Reiniciar el servidor
 ```
 
+**Problemas específicos de Android TV:**
+```bash
+# Verificar URLs dinámicas en logs del servidor
+# Buscar mensajes: "🌐 [Android TV Stream] Usando URL base"
+
+# Si persisten errores de reproducción:
+# 1. Verificar que la TV esté en la misma red
+# 2. Comprobar que el puerto 3000 esté accesible
+# 3. Revisar logs de errores detallados en consola
+```
+
 **FFmpeg no encontrado:**
 ```bash
 # Windows
@@ -233,6 +270,15 @@ ffprobe -version
 ```bash
 npm run check-streaming
 npm run optimize-videos
+```
+
+**Errores de TypeScript:**
+```bash
+# Verificar tipos
+npm run lint
+
+# Rebuild completo
+npm run build
 ```
 
 **Reset completo:**
@@ -251,18 +297,27 @@ npm run dev
 ## 🏗️ Arquitectura Técnica
 
 ### Stack Tecnológico
-- **Frontend**: Next.js 14, React 18, TypeScript
+- **Frontend**: Next.js 14, React 18, TypeScript (estricto)
 - **Styling**: Tailwind CSS, Framer Motion
 - **Backend**: Next.js API Routes, Node.js
 - **Tiempo Real**: WebSockets, Server-Sent Events
-- **Multimedia**: FFmpeg, HLS Streaming
+- **Multimedia**: FFmpeg, HLS Streaming, Video optimizado
 - **Testing**: Jest, React Testing Library
+- **Networking**: URLs dinámicas, detección automática de host
 
 ### Patrones de Diseño
 - **Clean Architecture**: Separación de responsabilidades
 - **Repository Pattern**: Acceso a datos centralizado
 - **Observer Pattern**: Actualizaciones en tiempo real
 - **Factory Pattern**: Creación de componentes dinámicos
+- **Error Handling Pattern**: Manejo robusto con reintentos inteligentes
+- **Type Safety Pattern**: TypeScript estricto con type guards
+
+### Optimizaciones Específicas
+- **Android TV**: Configuración de hardware limitado, gestión de memoria
+- **Network Resilience**: URLs adaptables, detección automática de red
+- **Error Recovery**: Sistema de reintentos incrementales y clasificación de errores
+- **Performance**: Preload inteligente, limpieza automática de buffers
 
 ## 📚 Documentación Adicional
 
@@ -287,7 +342,3 @@ Para soporte técnico o reportar bugs:
 1. Revisar la documentación en `/docs`
 2. Ejecutar diagnósticos: `npm run check-server`
 3. Crear un issue en el repositorio
-
----
-
-**Desarrollado con ❤️ para sistemas de Transmisión digital modernos**
