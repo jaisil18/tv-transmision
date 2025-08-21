@@ -88,12 +88,17 @@ export async function PUT(
     // Actualizar la pantalla con heartbeat
     const screen = screens[index];
     const currentTime = Date.now();
-    const lastSeen = data.lastSeen || currentTime;
-    const isOnline = (currentTime - lastSeen) < 300000; // 5 minutos
-
+    
+    // CORREGIDO: Siempre usar el tiempo actual del servidor como lastSeen
+    // El cliente envía heartbeat = pantalla está activa AHORA
+    const lastSeen = currentTime;
+    
+    console.log(`🕐 [Heartbeat] Tiempo actual del servidor: ${new Date(currentTime).toLocaleString()}`);
+    console.log(`📡 [Heartbeat] Último heartbeat del cliente: ${data.lastSeen ? new Date(data.lastSeen).toLocaleString() : 'No enviado'}`);
+    
     const updatedScreen: Screen = {
       ...screen,
-      status: isOnline ? 'active' : 'inactive',
+      status: 'active', // Si recibimos heartbeat, la pantalla está activa
       lastSeen: lastSeen,
       currentContent: data.currentContent || screen.currentContent,
       isRepeating: data.isRepeating !== undefined ? data.isRepeating : screen.isRepeating,
@@ -103,7 +108,14 @@ export async function PUT(
     screens[index] = updatedScreen;
     await saveScreens(screens);
 
-    console.log(`✅ [Heartbeat] Pantalla ${id} actualizada - Estado: ${updatedScreen.status}, Última vez visto: ${new Date(lastSeen).toLocaleString()}`);
+    console.log(`✅ [Heartbeat] Pantalla ${id} actualizada:`);
+    console.log(`   📊 Estado: ${screen.status} → ${updatedScreen.status}`);
+    console.log(`   ⏰ Última vez visto: ${new Date(lastSeen).toLocaleString()}`);
+    console.log(`   📺 Contenido actual: ${updatedScreen.currentContent || 'No asignado'}`);
+    console.log(`   🔁 Repetir: ${updatedScreen.isRepeating ? 'Sí' : 'No'}`);
+    console.log(`   🔇 Silenciado: ${updatedScreen.muted ? 'Sí' : 'No'}`);
+    console.log(`   🌐 User-Agent: ${request.headers.get('user-agent') || 'No disponible'}`);
+    console.log(`   📍 IP: ${request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'No disponible'}`);    console.log(`   ─────────────────────────────────────────────────────────`);
 
     return NextResponse.json({
       success: true,

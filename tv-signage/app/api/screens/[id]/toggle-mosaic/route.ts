@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendEventToScreen } from '@/lib/server-init';
 
-export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const screenId = params.id;
+    const { id: screenId } = await params;
     
     // Verificar que el ID de la pantalla sea válido
     if (!screenId) {

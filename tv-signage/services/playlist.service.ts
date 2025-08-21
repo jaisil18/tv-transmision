@@ -2,7 +2,7 @@ import { DataAccessLayer } from '../lib/data-access-layer';
 import { validateRequest, PlaylistSchema, validatePlaylistId } from '../lib/validation';
 import { NotFoundError, APIError } from '../lib/error-handler';
 import { logger } from '../lib/logger';
-import { WebSocketManager } from '../lib/websocket-server';
+import wsManager from '../utils/websocket-server';
 import path from 'path';
 
 interface Playlist {
@@ -40,11 +40,11 @@ interface UpdatePlaylistRequest {
 
 export class PlaylistService {
   private dal = DataAccessLayer.getInstance();
-  private wsManager: WebSocketManager;
+  private wsManager: typeof wsManager;
   private readonly PLAYLISTS_FILE = path.join(process.cwd(), 'data', 'playlists.json');
   
-  constructor(wsManager: WebSocketManager) {
-    this.wsManager = wsManager;
+  constructor(wsManagerInstance: typeof wsManager) {
+    this.wsManager = wsManagerInstance;
   }
   
   async getPlaylists(): Promise<Playlist[]> {
@@ -89,8 +89,8 @@ export class PlaylistService {
     await this.dal.writeJsonFile(this.PLAYLISTS_FILE, playlists);
     
     logger.info(`Created playlist: ${newPlaylist.name} (${newPlaylist.id})`);
-    this.wsManager.notifyPlaylistUpdate();
-    
+    this.wsManager.notifyPlaylistUpdate(newPlaylist.id, newPlaylist.screens);
+
     return newPlaylist;
   }
   
@@ -113,8 +113,8 @@ export class PlaylistService {
     await this.dal.writeJsonFile(this.PLAYLISTS_FILE, playlists);
     
     logger.info(`Updated playlist: ${updatedPlaylist.name} (${updatedPlaylist.id})`);
-    this.wsManager.notifyPlaylistUpdate();
-    
+    this.wsManager.notifyPlaylistUpdate(updatedPlaylist.id, updatedPlaylist.screens);
+
     return updatedPlaylist;
   }
   
@@ -130,7 +130,7 @@ export class PlaylistService {
     await this.dal.writeJsonFile(this.PLAYLISTS_FILE, filteredPlaylists);
     
     logger.info(`Deleted playlist: ${playlistId}`);
-    this.wsManager.notifyPlaylistUpdate();
+    this.wsManager.notifyPlaylistUpdate(playlistId, []);
   }
   
   async getPlaylistsByScreen(screenId: string): Promise<Playlist[]> {

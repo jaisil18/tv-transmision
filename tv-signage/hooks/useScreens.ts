@@ -1,7 +1,14 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { ScreenService } from '@/services/screen.service';
+import { wsManager } from '@/utils/websocket-server';
 
-const screenService = new ScreenService();
+interface CreateScreenRequest {
+  name: string;
+  location?: string;
+  description?: string;
+}
+
+const screenService = new ScreenService(wsManager);
 
 export function useScreens() {
   return useQuery({

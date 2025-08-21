@@ -4,7 +4,7 @@ import { APIError, NotFoundError } from '../lib/error-handler';
 import { logger } from '../lib/logger';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { WebSocketManager } from '../lib/websocket-server';
+import { wsManager } from '../utils/websocket-server';
 
 interface FileInfo {
   name: string;
@@ -26,14 +26,14 @@ interface UploadFileRequest {
 
 export class FileService {
   private dal = DataAccessLayer.getInstance();
-  private wsManager: WebSocketManager;
+  private wsManager: typeof wsManager;
   private readonly UPLOADS_DIR = path.join(process.cwd(), 'public', 'uploads');
   private readonly THUMBNAILS_DIR = path.join(process.cwd(), 'public', 'thumbnails');
   private readonly ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'webm', 'mov'];
   private readonly MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
   
-  constructor(wsManager: WebSocketManager) {
-    this.wsManager = wsManager;
+  constructor(wsManagerInstance: typeof wsManager) {
+    this.wsManager = wsManagerInstance;
   }
   
   async getFiles(folder?: string): Promise<FileInfo[]> {
@@ -129,7 +129,7 @@ export class FileService {
       };
       
       logger.info(`Uploaded file: ${fileName} (${data.size} bytes)`);
-      this.wsManager.notifyFileUpload(fileInfo);
+      this.wsManager.notifyFileUploaded([fileName]);
       
       return fileInfo;
     } catch (error) {

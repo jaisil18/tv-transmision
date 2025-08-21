@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Monitor, PowerOff, RefreshCw, List, Clock, Film, Loader2, Repeat, Volume2, VolumeX, ChevronLeft, ChevronRight, ExternalLink, Copy, Video, RotateCcw, Users, Wifi } from 'lucide-react';
 import Modal from '@/components/Modal';
 import PageLayout from '@/components/PageLayout';
+import ProtectedRoute from '@/components/ProtectedRoute';
+import { useAuthenticatedFetch } from '@/hooks/useAuth';
 import type { Screen } from '@/types/screen';
 
 import AnalyticsDashboard from '@/components/analytics/AnalyticsDashboard';
@@ -28,7 +30,7 @@ interface ConnectedDevice {
   connectedAt: string;
 }
 
-export default function Home() {
+function AdminContent() {
   const [screens, setScreens] = useState<Screen[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -41,6 +43,7 @@ export default function Home() {
   const [lastScreenCount, setLastScreenCount] = useState<number>(0);
   const [notification, setNotification] = useState<string | null>(null);
   const [isRestartingService, setIsRestartingService] = useState(false);
+  const { authenticatedFetch } = useAuthenticatedFetch();
 
   // Agregar conexión WebSocket para recibir notificaciones en tiempo real
   useEffect(() => {
@@ -93,7 +96,7 @@ export default function Home() {
   const fetchScreens = async () => {
     try {
       setError(null);
-      const response = await fetch('/api/screens');
+      const response = await authenticatedFetch('/api/screens');
 
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -135,7 +138,7 @@ export default function Home() {
 
   const fetchConnectedDevices = async (screenId: string) => {
     try {
-      const response = await fetch(`/api/screens/${screenId}/devices`);
+      const response = await authenticatedFetch(`/api/screens/${screenId}/devices`);
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
@@ -156,7 +159,7 @@ export default function Home() {
   const handleRefreshContent = async (screenId: string) => {
     setIsActionLoading(screenId);
     try {
-      const response = await fetch(`/api/screens/${screenId}/refresh-content`, { method: 'POST' });
+      const response = await authenticatedFetch(`/api/screens/${screenId}/refresh-content`, { method: 'POST' });
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
@@ -193,7 +196,7 @@ export default function Home() {
 
     setIsActionLoading(id);
     try {
-      const response = await fetch(`/api/screens/${id}/refresh`, { method: 'POST' });
+      const response = await authenticatedFetch(`/api/screens/${id}/refresh`, { method: 'POST' });
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
@@ -220,7 +223,7 @@ export default function Home() {
   const handlePowerAction = async (id: string, action: 'on' | 'off') => {
     setIsActionLoading(id);
     try {
-      const response = await fetch(`/api/screens/${id}/power`, {
+      const response = await authenticatedFetch(`/api/screens/${id}/power`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action }),
@@ -240,7 +243,7 @@ export default function Home() {
   const handleRepeat = async (id: string) => {
     setIsActionLoading(id);
     try {
-      const response = await fetch(`/api/screens/${id}/toggle-repeat`, { method: 'POST' });
+      const response = await authenticatedFetch(`/api/screens/${id}/toggle-repeat`, { method: 'POST' });
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
@@ -256,7 +259,7 @@ export default function Home() {
   const handleMuteToggle = async (screenId: string) => {
     setIsActionLoading(screenId);
     try {
-      const response = await fetch(`/api/screens/${screenId}/mute`, {
+      const response = await authenticatedFetch(`/api/screens/${screenId}/mute`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -277,7 +280,7 @@ export default function Home() {
   const handleNavigateContent = async (screenId: string, direction: 'next' | 'previous') => {
     setIsActionLoading(screenId);
     try {
-      const response = await fetch(`/api/screens/${screenId}/navigate`, {
+      const response = await authenticatedFetch(`/api/screens/${screenId}/navigate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -339,7 +342,7 @@ export default function Home() {
 
   const handleShowContent = async (screen: Screen) => {
     try {
-      const response = await fetch(`/api/screens/${screen.id}/content`);
+      const response = await authenticatedFetch(`/api/screens/${screen.id}/content`);
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
       }
@@ -362,7 +365,7 @@ export default function Home() {
     try {
       console.log('🔄 [Service Restart] Iniciando reinicio del servicio...');
 
-      const response = await fetch('/api/system/restart', {
+      const response = await authenticatedFetch('/api/system/restart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -739,5 +742,12 @@ export default function Home() {
       </Modal>
     </PageLayout>
   );
+}
 
+export default function AdminPage() {
+  return (
+    <ProtectedRoute>
+      <AdminContent />
+    </ProtectedRoute>
+  );
 }

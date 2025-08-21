@@ -3,7 +3,21 @@
     "id": "1755785533346",
     "name": "TIENDA STORE",
     "status": "active",
-    "lastSeen": 1755790319662,
+    "lastSeen": 1755797936095,
+    "muted": true
+  },
+  {
+    "id": "1755795004076",
+    "name": "Topico",
+    "status": "active",
+    "lastSeen": 1755797935329,
+    "muted": true
+  },
+  {
+    "id": "1755795119352",
+    "name": "CAS",
+    "status": "active",
+    "lastSeen": 1755797928489,
     "muted": true
   }
 ]

@@ -1,6 +1,9 @@
 import { WebSocketServer, WebSocket } from 'ws';
 import { IncomingMessage } from 'http';
 import { parse } from 'url';
+import fs from 'fs/promises';
+import path from 'path';
+import { screenStatusChecker } from './screen-status-checker';
 
 interface ClientInfo {
   id: string;
@@ -9,10 +12,69 @@ interface ClientInfo {
   lastSeen: number;
 }
 
+interface Screen {
+  id: string;
+  name: string;
+  status: 'active' | 'inactive';
+  lastSeen: number;
+  currentContent?: string;
+  isRepeating?: boolean;
+  muted?: boolean;
+}
+
+const SCREENS_FILE = path.join(process.cwd(), 'data', 'screens.json');
+
 class WebSocketManager {
   private wss: WebSocketServer | null = null;
   private clients: Map<WebSocket, ClientInfo> = new Map();
   private isInitialized = false;
+
+  private async ensureDataDirectory() {
+    const dataDir = path.join(process.cwd(), 'data');
+    try {
+      await fs.access(dataDir);
+    } catch {
+      await fs.mkdir(dataDir, { recursive: true });
+    }
+  }
+
+  private async getScreens(): Promise<Screen[]> {
+    try {
+      await this.ensureDataDirectory();
+      const content = await fs.readFile(SCREENS_FILE, 'utf-8');
+      return JSON.parse(content);
+    } catch {
+      return [];
+    }
+  }
+
+  private async saveScreens(screens: Screen[]): Promise<void> {
+    await this.ensureDataDirectory();
+    await fs.writeFile(SCREENS_FILE, JSON.stringify(screens, null, 2));
+  }
+
+  private async updateScreenHeartbeat(screenId: string): Promise<void> {
+    try {
+      const screens = await this.getScreens();
+      const index = screens.findIndex(s => s.id === screenId);
+      
+      if (index !== -1) {
+        const currentTime = Date.now();
+        screens[index] = {
+          ...screens[index],
+          status: 'active',
+          lastSeen: currentTime
+        };
+        
+        await this.saveScreens(screens);
+        console.log(`💓 [WebSocket] Heartbeat persistido para pantalla ${screenId} - ${new Date(currentTime).toLocaleString()}`);
+      } else {
+        console.warn(`⚠️ [WebSocket] Pantalla ${screenId} no encontrada en screens.json`);
+      }
+    } catch (error) {
+      console.error(`❌ [WebSocket] Error al persistir heartbeat para pantalla ${screenId}:`, error);
+    }
+  }
 
   initialize(server: any) {
     if (this.isInitialized) return;
@@ -46,10 +108,10 @@ class WebSocketManager {
         timestamp: Date.now()
       });
 
-      ws.on('message', (data) => {
+      ws.on('message', async (data) => {
         try {
           const message = JSON.parse(data.toString());
-          this.handleMessage(ws, message);
+          await this.handleMessage(ws, message);
         } catch (error) {
           console.error('❌ [WebSocket] Error parsing message:', error);
         }
@@ -79,9 +141,12 @@ class WebSocketManager {
 
     this.isInitialized = true;
     console.log('✅ [WebSocket] Servidor WebSocket inicializado');
+    
+    // Iniciar verificador de estado de pantallas
+    screenStatusChecker.start(60000); // Verificar cada minuto
   }
 
-  private handleMessage(ws: WebSocket, message: any) {
+  private async handleMessage(ws: WebSocket, message: any) {
     const clientInfo = this.clients.get(ws);
     if (!clientInfo) return;
 
@@ -94,6 +159,11 @@ class WebSocketManager {
       
       case 'heartbeat':
         clientInfo.lastSeen = Date.now();
+        // CORREGIDO: Persistir heartbeat en screens.json si es una pantalla
+        if (clientInfo.type === 'screen' && clientInfo.screenId) {
+          console.log(`💓 [WebSocket] Heartbeat recibido de pantalla ${clientInfo.screenId}`);
+          await this.updateScreenHeartbeat(clientInfo.screenId);
+        }
         break;
     }
   }

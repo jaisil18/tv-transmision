@@ -5,17 +5,18 @@ import { Readable } from 'stream';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
   try {
+    const { path } = await params;
     // Determinar la ruta base según el primer segmento
     let basePath;
-    if (params.path[0] === 'content') {
+    if (path[0] === 'content') {
       // Para archivos de content (mosaicos, etc.)
-      basePath = join(process.cwd(), 'public', ...params.path);
+      basePath = join(process.cwd(), 'public', ...path);
     } else {
       // Para archivos de uploads
-      basePath = join(process.cwd(), 'public', 'uploads', ...params.path);
+      basePath = join(process.cwd(), 'public', 'uploads', ...path);
     }
     const filePath = basePath;
     
@@ -35,8 +36,9 @@ export async function GET(
       const stream = createReadStream(filePath);
       const readableStream = new ReadableStream({
         start(controller) {
-          stream.on('data', (chunk) => {
-            controller.enqueue(new Uint8Array(chunk));
+          stream.on('data', (chunk: string | Buffer) => {
+            const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+            controller.enqueue(new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength));
           });
           stream.on('end', () => {
             controller.close();
@@ -80,8 +82,9 @@ export async function GET(
     const stream = createReadStream(filePath, { start, end });
     const readableStream = new ReadableStream({
       start(controller) {
-        stream.on('data', (chunk) => {
-          controller.enqueue(new Uint8Array(chunk));
+        stream.on('data', (chunk: string | Buffer) => {
+          const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+          controller.enqueue(new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength));
         });
         stream.on('end', () => {
           controller.close();
@@ -142,17 +145,18 @@ function getContentType(filePath: string): string {
 
 export async function HEAD(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
   try {
+    const { path } = await params;
     // Determinar la ruta base según el primer segmento
     let basePath;
-    if (params.path[0] === 'content') {
+    if (path[0] === 'content') {
       // Para archivos de content (mosaicos, etc.)
-      basePath = join(process.cwd(), 'public', ...params.path);
+      basePath = join(process.cwd(), 'public', ...path);
     } else {
       // Para archivos de uploads
-      basePath = join(process.cwd(), 'public', 'uploads', ...params.path);
+      basePath = join(process.cwd(), 'public', 'uploads', ...path);
     }
     const filePath = basePath;
     

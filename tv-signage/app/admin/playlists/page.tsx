@@ -180,12 +180,41 @@ export default function PlaylistsPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('¿Estás seguro?')) return;
+    if (!confirm('¿Estás seguro de que deseas eliminar esta lista de reproducción?')) return;
+    
+    console.log('🗑️ Iniciando eliminación de playlist:', id);
+    
     try {
-      await fetch(`/api/playlists/${id}`, { method: 'DELETE' });
+      const response = await fetch(`/api/playlists/${id}`, { 
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      console.log('📡 Respuesta del servidor:', {
+        status: response.status,
+        statusText: response.statusText,
+        ok: response.ok
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Error desconocido' }));
+        console.error('❌ Error del servidor:', errorData);
+        alert(`Error al eliminar la lista: ${errorData.error || 'Error desconocido'}`);
+        return;
+      }
+      
+      const result = await response.json();
+      console.log('✅ Lista eliminada exitosamente:', result);
+      
+      // Actualizar los datos después de la eliminación exitosa
       await fetchAllData();
+      console.log('🔄 Datos actualizados después de la eliminación');
+      
     } catch (error) {
-      console.error('Error al eliminar la lista:', error);
+      console.error('💥 Error de red o excepción:', error);
+      alert(`Error de conexión: ${error instanceof Error ? error.message : 'Error desconocido'}`);
     }
   };
 

@@ -4,7 +4,7 @@
     "name": "tienda",
     "items": [
       {
-        "id": "1755785558536-1755786595562-a3go8rwj4",
+        "id": "1755785558536-1755794841592-klr8b3zj1",
         "name": "GRADUACIÓN_2025_4k.mp4",
         "url": "http://172.16.31.17:3000/api/files/media/nueva%5CGRADUACI%C3%93N_2025_4k.mp4",
         "type": "video",
@@ -18,6 +18,399 @@
     ],
     "folder": "nueva",
     "createdAt": 1755785558536,
-    "updatedAt": 1755786595562
+    "updatedAt": 1755794841592
+  },
+  {
+    "id": "1755795016020",
+    "name": "list topico",
+    "items": [
+      {
+        "id": "1755795016020-1755795017834-m6po6e6bo",
+        "name": "COLEGIO_DE_ENFERMEROS.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5CCOLEGIO_DE_ENFERMEROS.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 187616725,
+        "modified": 1750695596000
+      },
+      {
+        "id": "1755795016020-1755795017836-r1hfpy7s1",
+        "name": "COLEGIO_DE_PSICÓLOGOS - copia.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5CCOLEGIO_DE_PSIC%C3%93LOGOS%20-%20copia.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 87563837,
+        "modified": 1750695596000
+      },
+      {
+        "id": "1755795016020-1755795017837-vr8o51et1",
+        "name": "COLEGIO_DE_PSICÓLOGOS.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5CCOLEGIO_DE_PSIC%C3%93LOGOS.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 87563837,
+        "modified": 1750695596000
+      },
+      {
+        "id": "1755795016020-1755795017838-ys88dwa4g",
+        "name": "CONVENIO_BITEL.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5CCONVENIO_BITEL.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 85986477,
+        "modified": 1750695597000
+      },
+      {
+        "id": "1755795016020-1755795017838-1wc8psinm",
+        "name": "CONVENIO_CITECCAL.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5CCONVENIO_CITECCAL.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 191986830,
+        "modified": 1750695597000
+      },
+      {
+        "id": "1755795016020-1755795017840-u1g07redd",
+        "name": "CORLAD_-_UCT.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5CCORLAD_-_UCT.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 170226041,
+        "modified": 1750695597000
+      },
+      {
+        "id": "1755795016020-1755795017843-hcx1dykmz",
+        "name": "defensoría_universitaria.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5Cdefensor%C3%ADa_universitaria.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 53467300,
+        "modified": 1750695598000
+      },
+      {
+        "id": "1755795016020-1755795017849-0fw5yu7ie",
+        "name": "DIAPOS_QR_TV_TÓPICO_pptx_1_.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5CDIAPOS_QR_TV_T%C3%93PICO_pptx_1_.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 11020292,
+        "modified": 1750695598000
+      },
+      {
+        "id": "1755795016020-1755795017857-sx36ximxg",
+        "name": "REDES_SOCIALES.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5CREDES_SOCIALES.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 48930611,
+        "modified": 1750695598000
+      },
+      {
+        "id": "1755795016020-1755795017866-wdcd1pcyv",
+        "name": "TREND_MARCO_UCT.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5CTREND_MARCO_UCT.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 47830772,
+        "modified": 1750695598000
+      },
+      {
+        "id": "1755795016020-1755795017870-ue2c0kl9r",
+        "name": "UCT_XPRESS_5.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/T%C3%93PICO%5CUCT_XPRESS_5.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 85925664,
+        "modified": 1750695598000
+      }
+    ],
+    "screens": [
+      "1755795004076"
+    ],
+    "folder": "TÓPICO",
+    "createdAt": 1755795016020,
+    "updatedAt": 1755795017870
+  },
+  {
+    "id": "1755795130347",
+    "name": "LIST CAS",
+    "items": [
+      {
+        "id": "1755795130347-1755795130712-ajpsitqiz",
+        "name": "BOULEVARD TECNOLÓGICO VRI.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CBOULEVARD%20TECNOL%C3%93GICO%20VRI.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 46057497,
+        "modified": 1748038026000
+      },
+      {
+        "id": "1755795130347-1755795130713-wtqtunq2e",
+        "name": "CASS_UCT_XPRESS_7.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CCASS_UCT_XPRESS_7.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 104536203,
+        "modified": 1752590062342
+      },
+      {
+        "id": "1755795130347-1755795130715-yitabnova",
+        "name": "CEREMONIA DE GRADUACIÓN Y TITULACIÓN 2025.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CCEREMONIA%20DE%20GRADUACI%C3%93N%20Y%20TITULACI%C3%93N%202025.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 109893412,
+        "modified": 1746653856000
+      },
+      {
+        "id": "1755795130347-1755795130717-yz5r4ma7v",
+        "name": "COLEGIO DE ENFERMEROS.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CCOLEGIO%20DE%20ENFERMEROS.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 187616725,
+        "modified": 1743810540000
+      },
+      {
+        "id": "1755795130347-1755795130719-k33xahmwh",
+        "name": "COLEGIO DE PSICÓLOGOS.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CCOLEGIO%20DE%20PSIC%C3%93LOGOS.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 87563837,
+        "modified": 1743027482000
+      },
+      {
+        "id": "1755795130347-1755795130720-z1zhe45d6",
+        "name": "CONFERENCIA QUÍMICO FARMACÉUTICO.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CCONFERENCIA%20QU%C3%8DMICO%20FARMAC%C3%89UTICO.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 35003746,
+        "modified": 1748295614000
+      },
+      {
+        "id": "1755795130347-1755795130722-2xn4wcfay",
+        "name": "CONVENIO BITEL.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CCONVENIO%20BITEL.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 85986477,
+        "modified": 1744129290000
+      },
+      {
+        "id": "1755795130347-1755795130724-qa63wt8ap",
+        "name": "CONVENIO CAMARA DE COMERCIO.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CCONVENIO%20CAMARA%20DE%20COMERCIO.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 104906586,
+        "modified": 1747244344000
+      },
+      {
+        "id": "1755795130347-1755795130731-4y1xkqxg5",
+        "name": "CONVENIO CITECCAL.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CCONVENIO%20CITECCAL.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 191986830,
+        "modified": 1744063506000
+      },
+      {
+        "id": "1755795130347-1755795130735-hongsg5ih",
+        "name": "CORLAD - UCT.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CCORLAD%20-%20UCT.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 170226041,
+        "modified": 1743621320000
+      },
+      {
+        "id": "1755795130347-1755795130737-iedpe506p",
+        "name": "DEFENSORÍA UNIVERSITARIA.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CDEFENSOR%C3%8DA%20UNIVERSITARIA.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 53467300,
+        "modified": 1746650732000
+      },
+      {
+        "id": "1755795130347-1755795130738-68mfpbdol",
+        "name": "DÍA DE LA JUVENTUD.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CD%C3%8DA%20DE%20LA%20JUVENTUD.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 314095585,
+        "modified": 1727301452000
+      },
+      {
+        "id": "1755795130347-1755795130740-i2wa2iwy8",
+        "name": "DÍA DE LA MADRE.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CD%C3%8DA%20DE%20LA%20MADRE.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 70940061,
+        "modified": 1746903492000
+      },
+      {
+        "id": "1755795130347-1755795130742-yn33668j2",
+        "name": "FEDUP APERTURA.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CFEDUP%20APERTURA.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 59546330,
+        "modified": 1748006964000
+      },
+      {
+        "id": "1755795130347-1755795130745-cpivt7p99",
+        "name": "FELIZ DÍA DE LA MADRE - SALUDO RECTORA.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CFELIZ%20D%C3%8DA%20DE%20LA%20MADRE%20-%20SALUDO%20RECTORA.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 74466080,
+        "modified": 1746813600000
+      },
+      {
+        "id": "1755795130347-1755795130786-hcixut716",
+        "name": "HISTORIA SAN FRANCISCO 2024 HD.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CHISTORIA%20SAN%20FRANCISCO%202024%20HD.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 1551809152,
+        "modified": 1725982452000
+      },
+      {
+        "id": "1755795130347-1755795130793-pqw5l04d6",
+        "name": "IMPOSICIÓN DE MANDILES.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CIMPOSICI%C3%93N%20DE%20MANDILES.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 52540159,
+        "modified": 1747952892000
+      },
+      {
+        "id": "1755795130347-1755795130796-vjmz8918n",
+        "name": "MES MARIANO.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CMES%20MARIANO.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 40967790,
+        "modified": 1747174218000
+      },
+      {
+        "id": "1755795130347-1755795130797-6v9xj4box",
+        "name": "SEMANA DE LA EDUCACIÓN INICIAL.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CSEMANA%20DE%20LA%20EDUCACI%C3%93N%20INICIAL.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 94346374,
+        "modified": 1748389968000
+      },
+      {
+        "id": "1755795130347-1755795130802-issijwco9",
+        "name": "SEMINARIO INTERNACIONAL - DERECHO.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CSEMINARIO%20INTERNACIONAL%20-%20DERECHO.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 84205170,
+        "modified": 1748537476000
+      },
+      {
+        "id": "1755795130347-1755795130804-bcxyxzdh8",
+        "name": "TALLER DANZA.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CTALLER%20DANZA.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 152103311,
+        "modified": 1712699670000
+      },
+      {
+        "id": "1755795130347-1755795130806-0q4jyaiiw",
+        "name": "TALLER DE MÚSICA.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CTALLER%20DE%20M%C3%9ASICA.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 136180473,
+        "modified": 1712784482000
+      },
+      {
+        "id": "1755795130347-1755795130809-ldom89i4m",
+        "name": "TALLER KARATE.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CTALLER%20KARATE.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 254758800,
+        "modified": 1712932380000
+      },
+      {
+        "id": "1755795130347-1755795130811-h9ukcsvox",
+        "name": "TALLERES DE FUTSAL HD.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CTALLERES%20DE%20FUTSAL%20HD.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 112828023,
+        "modified": 1712699606000
+      },
+      {
+        "id": "1755795130347-1755795130813-c3kb0mubo",
+        "name": "UCT XPRESS 5.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CUCT%20XPRESS%205.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 85925664,
+        "modified": 1746483426000
+      },
+      {
+        "id": "1755795130347-1755795130814-jkkc7p4w7",
+        "name": "UCT XPRESS 6.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CUCT%20XPRESS%206.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 102969930,
+        "modified": 1746903224000
+      },
+      {
+        "id": "1755795130347-1755795130816-9x228q3mp",
+        "name": "UCT XPRESS 7.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CUCT%20XPRESS%207.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 104536203,
+        "modified": 1747509066000
+      },
+      {
+        "id": "1755795130347-1755795130819-4ini51c5a",
+        "name": "UCT XPRESS 8.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CUCT%20XPRESS%208.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 141259310,
+        "modified": 1748099184000
+      },
+      {
+        "id": "1755795130347-1755795130821-09rrd2z01",
+        "name": "VIDEO TALLERES 30 SEGUNDOS.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CVIDEO%20TALLERES%2030%20SEGUNDOS.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 147250140,
+        "modified": 1717707220000
+      },
+      {
+        "id": "1755795130347-1755795130822-7d40xs3i0",
+        "name": "VIDEO UCT PARA LA CÁMARA DE COMERCIO.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/CASS%5CVIDEO%20UCT%20PARA%20LA%20C%C3%81MARA%20DE%20COMERCIO.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 268215125,
+        "modified": 1728940266000
+      }
+    ],
+    "screens": [
+      "1755795119352"
+    ],
+    "folder": "CASS",
+    "createdAt": 1755795130347,
+    "updatedAt": 1755795130822
   }
 ]

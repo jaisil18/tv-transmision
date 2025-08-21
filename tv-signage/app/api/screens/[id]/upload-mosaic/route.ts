@@ -117,6 +117,9 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
       // Construir URL según la posición
       const subDir = position === 2 ? 'mosaico2' : 'mosaico1';
       
+      // Usar API de video para archivos de video, ruta directa para imágenes
+      const isVideo = file.type.startsWith('video/');
+      
       uploadedFiles.push({
         name: uniqueFileName,
         originalName: file.name,
@@ -124,8 +127,6 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
         position,
         duration,
         size: file.size,
-        // Usar API de video para archivos de video, ruta directa para imágenes
-        const isVideo = file.type.startsWith('video/');
         url: isVideo 
           ? `/api/video/content/mosaics/${screenId}/${subDir}/${uniqueFileName}`
           : `/content/mosaics/${screenId}/${subDir}/${uniqueFileName}`

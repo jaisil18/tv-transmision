@@ -340,74 +340,7 @@ export default function FileManager() {
 
   return (
     <div className="space-y-6">
-      {/* Información del sistema */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h3 className="text-lg font-semibold text-blue-900 mb-2">📁 Configuración del Sistema</h3>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm">
-          <div className="space-y-2">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-              <span className="font-medium text-blue-800 flex-shrink-0">Sistema Operativo:</span>
-              <span className="text-blue-700 break-words" suppressHydrationWarning>
-                {isClient ? (pathInfo.isWindows ? '🪟 Windows' : '🐧 Ubuntu/Linux') : '🐧 Ubuntu/Linux'}
-              </span>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-              <span className="font-medium text-blue-800 flex-shrink-0">Ruta Base:</span>
-              <span className="text-blue-700 font-mono text-xs sm:text-sm break-all" suppressHydrationWarning>
-                {isClient ? pathInfo.basePath : '/home/uct/Música'}
-              </span>
-            </div>
-          </div>
-          
-          <div className="mt-4 lg:mt-0">
-            <h4 className="font-medium text-blue-800 mb-2">Estructura de Carpetas:</h4>
-            <ul className="text-blue-700 space-y-1 text-xs sm:text-sm">
-              <li className="break-all" suppressHydrationWarning>
-                📁 Estructura: {isClient ? `${pathInfo.basePath}\\[carpeta]\\` : '/home/uct/Música/[carpeta]/'}
-              </li>
-              <li className="break-words">
-                📁 Carpetas disponibles para reescaneo desde la ruta base
-              </li>
-            </ul>
-          </div>
-        </div>
-        
-        {/* Métodos de Carga - Sección responsive */}
-        <div className="mt-4 pt-4 border-t border-blue-200">
-          <h4 className="font-medium text-blue-800 mb-3">📤 Métodos de Carga:</h4>
-          <div className="space-y-3">
-            <div className="bg-blue-100 rounded-lg p-3">
-              <div className="flex items-start gap-2">
-                <span className="text-blue-600 font-medium flex-shrink-0">•</span>
-                <div className="min-w-0 flex-1">
-                  <span className="font-medium text-blue-800">SCP:</span>
-                  <code className="ml-2 text-xs sm:text-sm bg-blue-200 px-2 py-1 rounded text-blue-900 break-all block mt-1 sm:inline sm:mt-0">
-                    scp archivo.mp4 uct@servidor:/home/uct/Música/carpeta/
-                  </code>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-blue-100 rounded-lg p-3">
-              <div className="flex items-start gap-2">
-                <span className="text-blue-600 font-medium flex-shrink-0">•</span>
-                <div className="min-w-0 flex-1">
-                  <span className="font-medium text-blue-800">SFTP con FileZilla o WinSCP</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-blue-100 rounded-lg p-3">
-              <div className="flex items-start gap-2">
-                <span className="text-blue-600 font-medium flex-shrink-0">•</span>
-                <div className="min-w-0 flex-1">
-                  <span className="font-medium text-blue-800">Acceso directo al servidor</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       {/* Header con información de rutas */}
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4">

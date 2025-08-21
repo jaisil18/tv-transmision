@@ -51,9 +51,9 @@ function getImageDuration(filename: string): number | undefined {
   return undefined; // Usar el valor por defecto
 }
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const screenId = params.id;
+    const { id: screenId } = await params;
     
     // Verificar que el ID de la pantalla sea válido
     if (!screenId) {

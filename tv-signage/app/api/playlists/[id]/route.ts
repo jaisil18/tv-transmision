@@ -44,39 +44,78 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    console.log('🗑️ [DELETE API] Iniciando eliminación de playlist');
+    
     const playlists = await getPlaylists();
     const { id } = await params;
-    const index = playlists.findIndex((p) => p.id === id);    if (index === -1) {
+    
+    console.log('🔍 [DELETE API] ID recibido:', id);
+    console.log('📋 [DELETE API] Total de playlists:', playlists.length);
+    
+    const index = playlists.findIndex((p) => p.id === id);
+    
+    if (index === -1) {
+      console.log('❌ [DELETE API] Playlist no encontrada con ID:', id);
+      console.log('📋 [DELETE API] IDs disponibles:', playlists.map(p => p.id));
       return NextResponse.json(
         { error: 'Lista de reproducción no encontrada' },
         { status: 404 }
       );
     }
 
+    const playlistToDelete = playlists[index];
+    console.log('📋 [DELETE API] Playlist encontrada:', {
+      id: playlistToDelete.id,
+      name: playlistToDelete.name,
+      screens: playlistToDelete.screens
+    });
+
     // Obtener las pantallas de la playlist antes de eliminarla
     const screensToUpdate = playlists[index].screens || [];
+    console.log('📺 [DELETE API] Pantallas a actualizar:', screensToUpdate);
     
     // Eliminar la playlist
     playlists.splice(index, 1);
+    console.log('✂️ [DELETE API] Playlist eliminada del array, quedan:', playlists.length);
+    
     await fs.writeFile(PLAYLISTS_FILE, JSON.stringify(playlists, null, 2));
+    console.log('💾 [DELETE API] Archivo playlists.json actualizado');
 
     // Verificar si las pantallas están asignadas a otras playlists
     if (screensToUpdate.length > 0) {
       const otherPlaylistScreens = playlists.flatMap(p => p.screens);
       const screensToDeactivate = screensToUpdate.filter(
-        id => !otherPlaylistScreens.includes(id)
+        screenId => !otherPlaylistScreens.includes(screenId)
       );
       
+      console.log('📺 [DELETE API] Pantallas en otras playlists:', otherPlaylistScreens);
+      console.log('📺 [DELETE API] Pantallas a desactivar:', screensToDeactivate);
+      
       if (screensToDeactivate.length > 0) {
-        await updateScreensStatus(screensToDeactivate, 'inactive');
+        try {
+          await updateScreensStatus(screensToDeactivate, 'inactive');
+          console.log('✅ [DELETE API] Estados de pantallas actualizados');
+        } catch (screenError) {
+          console.error('❌ [DELETE API] Error al actualizar pantallas:', screenError);
+          // No fallar la eliminación por este error
+        }
       }
     }
 
-    return NextResponse.json({ success: true });
+    console.log('✅ [DELETE API] Eliminación completada exitosamente');
+    return NextResponse.json({ 
+      success: true, 
+      message: 'Lista de reproducción eliminada correctamente',
+      deletedId: id
+    });
   } catch (error) {
-    console.error('Error al eliminar la lista de reproducción:', error);
+    console.error('💥 [DELETE API] Error crítico:', error);
+    console.error('💥 [DELETE API] Stack trace:', error instanceof Error ? error.stack : 'No stack available');
     return NextResponse.json(
-      { error: 'Error al eliminar la lista de reproducción' },
+      { 
+        error: 'Error interno del servidor al eliminar la lista de reproducción',
+        details: error instanceof Error ? error.message : 'Error desconocido'
+      },
       { status: 500 }
     );
   }
