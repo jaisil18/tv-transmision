@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_orange">#FFFFC107</color>
+    <color name="background_dark">#FF121212</color>
+    <color name="background_light">#FFF8F9FA</color>
+    <color name="black">#FF000000</color>
+    <color name="card_background">#FFFFFFFF</color>
+    <color name="card_shadow">#1A000000</color>
+    <color name="premium_gold">#FFFFD700</color>
+    <color name="premium_gradient_end">#FF764BA2</color>
+    <color name="premium_gradient_start">#FF667EEA</color>
+    <color name="primary_blue">#FF0D47A1</color>
+    <color name="primary_blue_dark">#FF01579B</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="status_active">#FF2E7D32</color>
+    <color name="status_inactive">#FFD32F2F</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="text_primary">#FF1A1A1A</color>
+    <color name="text_secondary">#FF6C757D</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">UCTCraftViewGO</string>
+    <string name="connection_error">Error de conexión con el servidor</string>
+    <string name="error_loading">Error al cargar datos</string>
+    <string name="last_seen">Última conexión: %s</string>
+    <string name="loading">Cargando...</string>
+    <string name="muted">Silenciado</string>
+    <string name="no_content">No hay contenido asignado</string>
+    <string name="no_screens">No hay pantallas disponibles</string>
+    <string name="play_content">Reproducir contenido</string>
+    <string name="playlist_empty">Lista de reproducción vacía</string>
+    <string name="refresh">Actualizar</string>
+    <string name="retry">Reintentar</string>
+    <string name="screen_detail_title">Contenido de Pantalla</string>
+    <string name="screens_title">Pantallas Disponibles</string>
+    <string name="server_url">Servidor: http://172.16.31.17:3000</string>
+    <string name="status_active">Activa</string>
+    <string name="status_inactive">Inactiva</string>
+    <string name="toggle_orientation">Cambiar orientación</string>
+    <string name="unmuted">Con audio</string>
+    <style name="Theme.TVContentViewer" parent="Theme.Material3.DayNight">
+        
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorPrimaryVariant">@color/primary_blue_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/accent_orange</item>
+        <item name="colorSecondaryVariant">@color/premium_gold</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:navigationBarColor">?attr/colorPrimaryVariant</item>
+        
+        <item name="android:windowBackground">@color/background_dark</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+    </style>
+    <style name="Theme.TVContentViewer.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.TVContentViewer.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+    <style name="Theme.TVContentViewer.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+</resources>

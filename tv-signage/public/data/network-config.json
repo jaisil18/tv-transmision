@@ -1,0 +1,25 @@
+{
+  "serverIP": "192.168.101.3",
+  "serverPort": 3000,
+  "rtspPort": 8554,
+  "interfaces": [
+    {
+      "name": "Ethernet",
+      "address": "192.168.101.3",
+      "isPrivate": true
+    }
+  ],
+  "urls": {
+    "web": "http://192.168.101.3:3000",
+    "admin": "http://192.168.101.3:3000/admin",
+    "api": "http://192.168.101.3:3000/api",
+    "hls": "http://192.168.101.3:3000/api/hls",
+    "rtsp": "rtsp://192.168.101.3:8554"
+  },
+  "accessInstructions": {
+    "sameNetwork": "http://192.168.101.3:3000/screen/[SCREEN_ID]",
+    "differentVLAN": "Asegúrate de que el puerto 3000 esté abierto en el firewall",
+    "mobile": "Conecta tu móvil a la misma red y usa: http://192.168.101.3:3000/screen/[SCREEN_ID]"
+  },
+  "lastUpdated": "2025-06-16T08:52:10.083Z"
+}

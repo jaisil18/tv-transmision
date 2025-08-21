@@ -1,0 +1,22 @@
+[Unit]
+Description=TV Signage Auto-Refresh Monitor
+After=tv-signage.service
+Wants=tv-signage.service
+
+[Service]
+Type=simple
+User=uct
+Group=uct
+WorkingDirectory=/mnt/raid1/tv-signage
+ExecStart=/mnt/raid1/tv-signage/scripts/auto-refresh.sh
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=tv-signage-auto-refresh
+
+# Configuración de recursos
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

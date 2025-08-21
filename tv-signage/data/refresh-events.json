@@ -1,0 +1,106 @@
+[
+  {
+    "type": "playlist-updated",
+    "timestamp": 1751434492982,
+    "data": {
+      "playlistId": "1751434492960",
+      "screens": [
+        "1751434470587"
+      ],
+      "name": "listopico"
+    }
+  },
+  {
+    "type": "playlist-updated",
+    "timestamp": 1751434500084,
+    "data": {
+      "playlistId": "1751434500041",
+      "screens": [
+        "1751434470587"
+      ],
+      "name": "listopico"
+    }
+  },
+  {
+    "type": "playlist-updated",
+    "timestamp": 1751434505864,
+    "data": {
+      "playlistId": "1751434505852",
+      "screens": [
+        "1751434470587"
+      ],
+      "name": "listopico"
+    }
+  },
+  {
+    "type": "playlist-updated",
+    "timestamp": 1751491207039,
+    "data": {
+      "playlistId": "1751491207020",
+      "screens": [
+        "1751491146320"
+      ],
+      "name": "LIST CAS"
+    }
+  },
+  {
+    "type": "playlist-updated",
+    "timestamp": 1751491243325,
+    "data": {
+      "playlistId": "1751491243316",
+      "screens": [
+        "1751491152635"
+      ],
+      "name": "LIST TOPICO"
+    }
+  },
+  {
+    "type": "playlist-updated",
+    "timestamp": 1751491261046,
+    "data": {
+      "playlistId": "1751491260989",
+      "screens": [
+        "1751491146320"
+      ],
+      "name": "LIST CAS"
+    }
+  },
+  {
+    "type": "playlist-updated",
+    "timestamp": 1751636025928,
+    "data": {
+      "playlistId": "1751636025896",
+      "screens": [
+        "1751635997483"
+      ],
+      "name": "LIST TOPICO"
+    }
+  },
+  {
+    "type": "playlist-updated",
+    "timestamp": 1751910661560,
+    "data": {
+      "playlistId": "1751910661546",
+      "screens": [],
+      "name": "list cas"
+    }
+  },
+  {
+    "type": "playlist-updated",
+    "timestamp": 1755785556618,
+    "data": {
+      "playlistId": "1755785556600",
+      "screens": [],
+      "name": "tienda"
+    }
+  },
+  {
+    "type": "playlist-updated",
+    "timestamp": 1755785558554,
+    "data": {
+      "playlistId": "1755785558536",
+      "screens": [],
+      "name": "tienda"
+    }
+  }
+]

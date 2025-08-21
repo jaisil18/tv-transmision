@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">UCTCraftViewGO</string>
+    <string name="screens_title">Pantallas Disponibles</string>
+    <string name="screen_detail_title">Contenido de Pantalla</string>
+    <string name="status_active">Activa</string>
+    <string name="status_inactive">Inactiva</string>
+    <string name="last_seen">Última conexión: %s</string>
+    <string name="no_screens">No hay pantallas disponibles</string>
+    <string name="no_content">No hay contenido asignado</string>
+    <string name="loading">Cargando...</string>
+    <string name="error_loading">Error al cargar datos</string>
+    <string name="retry">Reintentar</string>
+    <string name="refresh">Actualizar</string>
+    <string name="play_content">Reproducir contenido</string>
+    <string name="muted">Silenciado</string>
+    <string name="unmuted">Con audio</string>
+    <string name="playlist_empty">Lista de reproducción vacía</string>
+    <string name="connection_error">Error de conexión con el servidor</string>
+    <string name="server_url">Servidor: http://172.16.31.17:3000</string>
+    <string name="toggle_orientation">Cambiar orientación</string>
+</resources>

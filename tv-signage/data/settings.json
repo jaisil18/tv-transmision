@@ -1,0 +1,59 @@
+{
+  "systemName": " CODECRAFT",
+  "timezone": "America/Lima",
+  "serverUrl": "http://192.168.101.3",
+  "serverPort": 3000,
+  "heartbeatInterval": 30,
+  "connectionTimeout": 10,
+  "transitionTime": 10,
+  "defaultVolume": 20,
+  "autoUpdate": true,
+  "operatingHours": {
+    "enabled": false,
+    "monday": {
+      "start": "06:00",
+      "end": "17:00",
+      "enabled": true
+    },
+    "tuesday": {
+      "start": "07:00",
+      "end": "17:00",
+      "enabled": true
+    },
+    "wednesday": {
+      "start": "07:00",
+      "end": "17:00",
+      "enabled": true
+    },
+    "thursday": {
+      "start": "07:00",
+      "end": "17:00",
+      "enabled": true
+    },
+    "friday": {
+      "start": "07:00",
+      "end": "17:00",
+      "enabled": true
+    },
+    "saturday": {
+      "start": "08:00",
+      "end": "13:00",
+      "enabled": true
+    },
+    "sunday": {
+      "start": "08:00",
+      "end": "20:00",
+      "enabled": false
+    }
+  },
+  "emergency": {
+    "enabled": false,
+    "message": "Prueba de Emergencia",
+    "backgroundColor": "#dc2626",
+    "textColor": "#ffffff",
+    "priority": "critical",
+    "autoHide": true,
+    "hideAfter": 1
+  },
+  "lastNetworkUpdate": "2025-06-16T08:52:10.082Z"
+}

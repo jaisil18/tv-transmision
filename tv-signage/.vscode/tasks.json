@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "auto-refresh-logs",
+			"problemMatcher": [],
+			"label": "npm: auto-refresh-logs",
+			"detail": "sudo journalctl -u tv-signage-auto-refresh.service -f --lines=20"
+		}
+	]
+}

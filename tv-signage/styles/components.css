@@ -1,0 +1,71 @@
+/* LoadingSpinner */
+.loading-spinner {
+  border: 2px solid;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ScreenCard */
+.screen-card {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.screen-card:hover {
+  transform: translateY(-2px);
+}
+
+.screen-card-content {
+  padding: 1rem;
+}
+
+.screen-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.screen-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.status-indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.status-indicator.active {
+  background-color: #22c55e;
+}
+
+.status-indicator.inactive {
+  background-color: #ef4444;
+}
+
+.screen-details {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.screen-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Screen List */
+.screen-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding: 1rem;
+}

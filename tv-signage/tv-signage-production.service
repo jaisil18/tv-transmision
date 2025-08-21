@@ -1,0 +1,38 @@
+[Unit]
+Description=TV Signage System - Production
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=uct
+Group=uct
+WorkingDirectory=/mnt/raid1/tv-signage
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+ExecStart=/usr/bin/npm run start
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=5
+# Configuración de logs optimizada
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=tv-signage
+LogLevelMax=info
+LogRateLimitIntervalSec=30s
+LogRateLimitBurst=100
+
+# Configuración de recursos
+LimitNOFILE=65536
+MemoryMax=2G
+
+# Configuración de seguridad
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=false
+ReadWritePaths=/mnt/raid1/tv-signage
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

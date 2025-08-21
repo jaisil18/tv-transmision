@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Videos - UCT TV</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: monospace;
+            padding: 20px;
+        }
+        .video-container {
+            margin: 20px 0;
+            border: 1px solid #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        video {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .success { background: #0a5d0a; }
+        .error { background: #5d0a0a; }
+        .info { background: #0a0a5d; }
+    </style>
+</head>
+<body>
+    <h1>🎬 Test de Videos - Pantalla 1750095404499</h1>
+    
+    <div class="status info" id="status">
+        Cargando información de videos...
+    </div>
+
+    <div id="videos-container">
+        <!-- Los videos se cargarán aquí -->
+    </div>
+
+    <script>
+        async function loadVideos() {
+            try {
+                // Obtener la lista de videos de la pantalla
+                const response = await fetch('/api/screens/1750095404499/content');
+                const data = await response.json();
+                
+                const statusDiv = document.getElementById('status');
+                const container = document.getElementById('videos-container');
+                
+                if (data.items && data.items.length > 0) {
+                    statusDiv.innerHTML = `✅ Encontrados ${data.items.length} videos en playlist: ${data.playlistName}`;
+                    statusDiv.className = 'status success';
+                    
+                    data.items.forEach((item, index) => {
+                        const videoDiv = document.createElement('div');
+                        videoDiv.className = 'video-container';
+                        
+                        videoDiv.innerHTML = `
+                            <h3>Video ${index + 1}: ${item.name}</h3>
+                            <p><strong>URL:</strong> ${item.url}</p>
+                            <p><strong>Tipo:</strong> ${item.type}</p>
+                            <video controls preload="metadata" 
+                                   onloadstart="console.log('Cargando:', '${item.name}')"
+                                   oncanplay="console.log('Listo para reproducir:', '${item.name}')"
+                                   onerror="console.error('Error en video:', '${item.name}')">
+                                <source src="${item.url}" type="video/mp4">
+                                Tu navegador no soporta el elemento video.
+                            </video>
+                            <div class="status info">
+                                <small>Estado: <span id="status-${index}">Cargando...</span></small>
+                            </div>
+                        `;
+                        
+                        container.appendChild(videoDiv);
+                        
+                        // Test de accesibilidad
+                        fetch(item.url, { method: 'HEAD' })
+                            .then(response => {
+                                const statusSpan = document.getElementById(`status-${index}`);
+                                if (response.ok) {
+                                    statusSpan.innerHTML = `✅ Accesible (${response.status})`;
+                                    statusSpan.parentElement.className = 'status success';
+                                } else {
+                                    statusSpan.innerHTML = `❌ Error ${response.status}`;
+                                    statusSpan.parentElement.className = 'status error';
+                                }
+                            })
+                            .catch(error => {
+                                const statusSpan = document.getElementById(`status-${index}`);
+                                statusSpan.innerHTML = `❌ Error: ${error.message}`;
+                                statusSpan.parentElement.className = 'status error';
+                            });
+                    });
+                } else {
+                    statusDiv.innerHTML = '❌ No se encontraron videos en la playlist';
+                    statusDiv.className = 'status error';
+                }
+            } catch (error) {
+                const statusDiv = document.getElementById('status');
+                statusDiv.innerHTML = `❌ Error al cargar videos: ${error.message}`;
+                statusDiv.className = 'status error';
+            }
+        }
+        
+        // Cargar videos al iniciar
+        loadVideos();
+        
+        // Recargar cada 30 segundos
+        setInterval(loadVideos, 30000);
+    </script>
+</body>
+</html>

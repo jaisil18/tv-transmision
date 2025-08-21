@@ -1,0 +1,44 @@
+{
+  "autoStart": true,
+  "enableRTSP": true,
+  "enableHLS": true,
+  "defaultScreens": [],
+  "networkDetection": true,
+  "hlsSettings": {
+    "segmentDuration": 2,
+    "playlistSize": 10,
+    "bitrate": "1500k",
+    "maxBitrate": "2000k",
+    "resolution": "1920x1080",
+    "fps": 30,
+    "codec": "libx264",
+    "preset": "veryfast",
+    "profile": "baseline",
+    "level": "3.0"
+  },
+  "rtspSettings": {
+    "port": 8554,
+    "transport": "tcp",
+    "bitrate": "2500k",
+    "fps": 30,
+    "gopSize": 60
+  },
+  "mobileOptimization": {
+    "enabled": true,
+    "androidCompatibility": true,
+    "iosCompatibility": true,
+    "reducedBitrate": "1000k",
+    "adaptiveBitrate": true
+  },
+  "networkSettings": {
+    "autoDetectIP": true,
+    "allowedOrigins": ["*"],
+    "corsEnabled": true,
+    "adaptivePort": true
+  },
+  "cleanupSettings": {
+    "autoCleanup": true,
+    "segmentMaxAge": 60000,
+    "cleanupInterval": 30000
+  }
+}

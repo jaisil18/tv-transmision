@@ -1,0 +1,162 @@
+[
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_orientation_vertical.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_orientation_vertical.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/layout_item_screen.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/item_screen.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_skip_previous.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_skip_previous.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/layout_custom_player_control_view.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/custom_player_control_view.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_volume_up.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_volume_up.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/layout_activity_media_player.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/activity_media_player.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_media_info_background.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/media_info_background.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/layout_activity_main.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/xml_backup_rules.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_premium_card_background.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/premium_card_background.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_status_background.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/status_background.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_rotate_left.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_rotate_left.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_skip_next.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_skip_next.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_error_background_tv.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/error_background_tv.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_volume_off.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_volume_off.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_orientation_horizontal.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_orientation_horizontal.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_duration_background.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/duration_background.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_control_button_background.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/control_button_background.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_premium_gradient_background.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/premium_gradient_background.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_orientation_button_background.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/orientation_button_background.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_error_background.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/error_background.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/layout_activity_android_player.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/activity_android_player.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_status_background_tv.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/status_background_tv.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_image.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_image.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_content_type_background.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/content_type_background.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_arrow_back.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_arrow_back.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_pause.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_pause.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/layout_item_playlist_content.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/item_playlist_content.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/xml_data_extraction_rules.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_info_background_tv.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/info_background_tv.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/drawable_ic_play_arrow.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/drawable/ic_play_arrow.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/layout_activity_tv_player.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/activity_tv_player.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-debug-43:/layout_activity_screen_detail.xml.flat",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/activity_screen_detail.xml"
+    }
+]

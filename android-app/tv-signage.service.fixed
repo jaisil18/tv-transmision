@@ -1,0 +1,41 @@
+[Unit]
+Description=TV Signage System - Production
+After=network.target network-online.target
+Wants=network-online.target
+Requires=network.target
+ConditionPathExists=/mnt/raid1/tv-signage
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/mnt/raid1/tv-signage
+
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+ExecStartPre=/bin/bash -c 'cd /mnt/raid1/tv-signage && if [ ! -d .next ]; then echo "Building application..."; /usr/bin/npm run build || exit 1; fi'
+ExecStart=/usr/bin/npx next start -H 0.0.0.0 -p 3000
+ExecReload=/bin/kill -HUP $MAINPID
+
+Restart=always
+RestartSec=10
+StartLimitInterval=300
+StartLimitBurst=5
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=tv-signage
+
+LimitNOFILE=65536
+MemoryLimit=2G
+
+TimeoutStartSec=300
+TimeoutStopSec=30
+
+NoNewPrivileges=false
+
+[Install]
+WantedBy=multi-user.target

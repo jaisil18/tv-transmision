@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1755785558536",
+    "name": "tienda",
+    "items": [
+      {
+        "id": "1755785558536-1755786595562-a3go8rwj4",
+        "name": "GRADUACIÓN_2025_4k.mp4",
+        "url": "http://172.16.31.17:3000/api/files/media/nueva%5CGRADUACI%C3%93N_2025_4k.mp4",
+        "type": "video",
+        "duration": 30,
+        "size": 150784031,
+        "modified": 1755711510339
+      }
+    ],
+    "screens": [
+      "1755785533346"
+    ],
+    "folder": "nueva",
+    "createdAt": 1755785558536,
+    "updatedAt": 1755786595562
+  }
+]

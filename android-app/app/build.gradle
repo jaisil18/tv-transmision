@@ -1,0 +1,100 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.uct.tvcontentviewer'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.uct.tvcontentviewer"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    
+    packaging {
+        resources {
+            pickFirsts += ['**/libc++_shared.so', '**/libjsc.so']
+            excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE', 'META-INF/LICENSE.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    
+    buildFeatures {
+        viewBinding true
+        dataBinding false
+    }
+    
+    dependenciesInfo {
+        includeInApk false
+        includeInBundle false
+    }
+    
+    buildToolsVersion '34.0.0'
+}
+
+configurations.configureEach {
+    resolutionStrategy {
+        force 'androidx.core:core-ktx:1.16.0'
+        force 'androidx.appcompat:appcompat:1.7.1'
+        force 'com.squareup.okhttp3:okhttp:4.12.0'
+        force 'com.squareup.retrofit2:retrofit:2.11.0'
+        force 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.16.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.activity:activity-ktx:1.10.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    
+    // Networking
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0' // Para WebSocket
+    
+    // Image loading
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    
+    // Video player
+    implementation 'androidx.media3:media3-exoplayer:1.7.1'
+    implementation 'androidx.media3:media3-ui:1.7.1'
+    implementation 'androidx.media3:media3-common:1.7.1'
+    
+    // Lifecycle
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.9.1'
+    
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
+    
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+}

@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "com.uct.tvcontentviewer.app-mergeDebugResources-42:/layout/custom_player_control_view.xml",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/custom_player_control_view.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-mergeDebugResources-42:/layout/activity_main.xml",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-mergeDebugResources-42:/layout/activity_tv_player.xml",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/activity_tv_player.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-mergeDebugResources-42:/layout/item_playlist_content.xml",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/item_playlist_content.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-mergeDebugResources-42:/layout/activity_screen_detail.xml",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/activity_screen_detail.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-mergeDebugResources-42:/layout/activity_android_player.xml",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/activity_android_player.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-mergeDebugResources-42:/layout/item_screen.xml",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/item_screen.xml"
+    },
+    {
+        "merged": "com.uct.tvcontentviewer.app-mergeDebugResources-42:/layout/activity_media_player.xml",
+        "source": "com.uct.tvcontentviewer.app-main-45:/layout/activity_media_player.xml"
+    }
+]

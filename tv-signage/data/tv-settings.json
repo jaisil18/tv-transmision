@@ -1,0 +1,24 @@
+{
+  "systemName": "Android TV CODECRAFT",
+  "transitionTime": 5,
+  "defaultVolume": 30,
+  "tvOptimizations": {
+    "enabled": true,
+    "autoplay": {
+      "strategy": "aggressive",
+      "retryAttempts": 3,
+      "retryDelay": 2000
+    },
+    "memory": {
+      "clearBetweenVideos": true,
+      "preloadNext": false,
+      "maxCacheSize": "100MB"
+    },
+    "video": {
+      "preload": "auto",
+      "playsInline": true,
+      "muted": true,
+      "controls": false
+    }
+  }
+}
