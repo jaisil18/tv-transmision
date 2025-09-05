@@ -172,7 +172,7 @@ export default function Home() {
           </h1>
 
           <p className="text-sm sm:text-base text-uct-gray-600 mb-6 sm:mb-8 px-2">
-            Sistema de Señalización Digital
+            Sistema de Transmisión Digital
           </p>
 
           {/* Botón de acceso */}

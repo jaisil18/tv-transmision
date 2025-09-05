@@ -43,7 +43,7 @@ export default function NotificationCenter({ onClose }: NotificationCenterProps)
           id: '1',
           type: 'info',
           title: 'Sistema Iniciado',
-          message: 'El sistema de señalización digital se ha iniciado correctamente.',
+          message: 'El sistema de transmisión digital se ha iniciado correctamente.',
           timestamp: new Date().toISOString(),
           read: false
         },

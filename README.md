@@ -1,8 +1,8 @@
-# 📺 Sistema de Señalización Digital TV-Transmisión
+# 📺 Sistema de Transmisión Digital TV-Transmisión
 
 ## 🎯 Descripción General
 
-Este sistema está compuesto por dos componentes principales que trabajan en conjunto para proporcionar una solución completa de señalización digital:
+Este sistema está compuesto por dos componentes principales que trabajan en conjunto para proporcionar una solución completa de transmisión digital:
 
 - **`tv-signage`**: Servidor web centralizado (Next.js) que gestiona contenido y pantallas
 - **`android-app`**: Aplicación Android nativa para dispositivos de reproducción

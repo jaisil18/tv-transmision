@@ -86,7 +86,7 @@ export default function ResponsiveLayout({ children, showNotifications = true }:
                 <UCTLogo size={32} variant="isotipo" className="flex-shrink-0" />
                 <div className="hidden sm:block">
                   <h1 className="text-lg font-bold text-uct-primary">TV CODECRAFT</h1>
-                  <p className="text-xs text-uct-gray-600">Sistema de Señalización Digital</p>
+                  <p className="text-xs text-uct-gray-600">Sistema de Transmisión Digital</p>
                 </div>
               </div>
 

@@ -1,6 +1,6 @@
 # TV Signage
 
-Sistema de señalización digital para gestionar contenido en múltiples pantallas.
+Sistema de transmisión digital para gestionar contenido en múltiples pantallas.
 
 ## Requisitos previos
 
