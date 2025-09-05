@@ -28,7 +28,7 @@ export default function FilesPage() {
                   <ul className="list-disc list-inside space-y-1">
                     <li>Crea carpetas para organizar tu contenido</li>
                     <li>Cada carpeta puede contener videos e imágenes</li>
-                    <li>Estructura: /home/uct/Música/[carpeta]/</li>
+                    <li>Estructura: C:\Users\[usuario]\Music\tv-signage-media\[carpeta]\</li>
                   </ul>
                 </div>
                 <div>
@@ -42,9 +42,9 @@ export default function FilesPage() {
                 <div>
                   <h4 className="font-medium mb-1">📤 Métodos de Carga:</h4>
                   <ul className="list-disc list-inside space-y-1">
-                    <li>SCP: <code className="bg-blue-100 px-1 rounded">scp archivo.mp4 uct@servidor:/home/uct/Música/carpeta/</code></li>
-                    <li>SFTP con FileZilla o WinSCP</li>
-                    <li>Acceso directo al servidor</li>
+                    <li>Explorador de Windows: Navega directamente a la carpeta usando el botón 'Abrir en Explorador'</li>
+                    <li>Arrastrar y soltar: Usa la función de subida de archivos en la interfaz web</li>
+                    <li>Copia directa: Copia archivos directamente a la carpeta desde el explorador</li>
                   </ul>
                 </div>
                 <div>

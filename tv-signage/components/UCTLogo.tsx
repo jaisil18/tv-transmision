@@ -32,12 +32,12 @@ export default function UCTLogo({ className = '', size = 40, variant = 'isotipo'
       <Image
         src="/GO-UCT-min-650x390.png"
         alt="UCT Logo"
-        width={size * 2.8} // Aumentar ancho para evitar superposición
-        height={size}
+        width={650}
+        height={390}
         className="drop-shadow-sm object-contain max-w-none"
         style={{
           width: 'auto',
-          height: '100px',
+          height: `${size}px`,
           maxWidth: 'none',
           objectFit: 'contain'
         }}

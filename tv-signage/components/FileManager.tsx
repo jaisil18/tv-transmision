@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { 
   Folder, 
   FolderPlus, 
+  FolderOpen,
   Upload, 
   Search, 
   ArrowLeft,
@@ -13,7 +14,8 @@ import {
   Trash2,
   RefreshCw,
   HardDrive,
-  FileText
+  FileText,
+  X
 } from 'lucide-react';
 import Modal from './Modal';
 import { getPathInfo, getFolderPath } from '../lib/path-config';
@@ -78,6 +80,7 @@ export default function FileManager() {
     name: string;
     folderName?: string;
   } | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   // Estado para información de rutas (evitar hidratación)
   const [pathInfo, setPathInfo] = useState({
@@ -297,6 +300,40 @@ export default function FileManager() {
     }
   };
 
+  // Limpiar mensajes
+  const clearMessages = () => {
+    setError(null);
+    setSuccessMessage(null);
+  };
+
+  // Abrir explorador de archivos
+  const handleOpenExplorer = async (folderPath?: string) => {
+    // Limpiar mensajes previos antes de iniciar
+    clearMessages();
+    
+    try {
+      const response = await fetch('/api/files/open-explorer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ folderPath })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Mostrar mensaje de éxito (se limpiará automáticamente con useEffect)
+        setSuccessMessage('✅ Explorador de archivos abierto exitosamente');
+      } else {
+        // Mostrar error (se limpiará automáticamente con useEffect)
+        setError(data.error || 'No se pudo abrir el explorador de archivos');
+      }
+    } catch (err) {
+      // Mostrar error (se limpiará automáticamente con useEffect)
+      setError('Error al intentar abrir el explorador de archivos');
+      console.error('Error opening explorer:', err);
+    }
+  };
+
   // Formatear tamaño
   const formatFileSize = (bytes: number): string => {
     if (bytes === 0) return '0 B';
@@ -338,6 +375,25 @@ export default function FileManager() {
     }
   }, [searchTerm, typeFilter, currentFolder]);
 
+  // Limpiar mensajes automáticamente después de un tiempo
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError(null);
+      }, 8000); // 8 segundos para errores
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage(null);
+      }, 4000); // 4 segundos para mensajes de éxito
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage]);
+
   return (
     <div className="space-y-6">
 
@@ -374,6 +430,15 @@ export default function FileManager() {
             <RefreshCw className={`h-4 w-4 ${rescanning ? 'animate-spin' : ''}`} />
             <span className="hidden sm:inline">{rescanning ? 'Rescaneando...' : 'Rescanear'}</span>
             <span className="sm:hidden">{rescanning ? 'Rescaneando...' : 'Rescanear'}</span>
+          </button>
+
+          <button
+            onClick={() => handleOpenExplorer(currentFolder || undefined)}
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+          >
+            <FolderOpen className="h-4 w-4" />
+            <span className="hidden sm:inline">Abrir en Explorador</span>
+            <span className="sm:hidden">Explorador</span>
           </button>
 
           {currentFolder ? (
@@ -482,10 +547,34 @@ export default function FileManager() {
         </div>
       )}
 
-      {/* Error */}
+      {/* Mensajes de Error y Éxito */}
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-700">{error}</p>
+          <div className="flex items-center justify-between">
+            <p className="text-red-700 flex-1">{error}</p>
+            <button
+              onClick={clearMessages}
+              className="ml-3 text-red-500 hover:text-red-700 transition-colors"
+              title="Cerrar mensaje"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
+      
+      {successMessage && (
+        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+          <div className="flex items-center justify-between">
+            <p className="text-green-700 flex-1">{successMessage}</p>
+            <button
+              onClick={clearMessages}
+              className="ml-3 text-green-500 hover:text-green-700 transition-colors"
+              title="Cerrar mensaje"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       )}
 
